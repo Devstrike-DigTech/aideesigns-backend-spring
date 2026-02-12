@@ -1,6 +1,7 @@
 package com.aideesigns.backend.order.service
 
 import com.aideesigns.backend.delivery.repository.DeliveryRepository
+import com.aideesigns.backend.notification.events.PaymentConfirmedEvent
 import com.aideesigns.backend.order.dto.*
 import com.aideesigns.backend.order.entity.DeliveryAddress
 import com.aideesigns.backend.order.entity.Order
@@ -19,6 +20,7 @@ import com.aideesigns.backend.shared.enums.PaymentStatus
 import com.aideesigns.backend.shared.exception.DomainException
 import com.aideesigns.backend.shared.exception.ResourceNotFoundException
 import org.springframework.beans.factory.annotation.Value
+import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.math.BigDecimal
@@ -34,6 +36,7 @@ class OrderService(
     private val productSizeRepository: ProductSizeRepository,
     private val paystackService: PaystackGatewayService,
     private val flutterwaveService: FlutterwaveGatewayService,
+    private val eventPublisher: ApplicationEventPublisher,
     @Value("\${app.payment.callback-url}") private val callbackUrl: String
 ) {
 
@@ -143,6 +146,8 @@ class OrderService(
         )
         order.payment = payment
         orderRepository.save(order)
+
+        eventPublisher.publishEvent(PaymentConfirmedEvent(this, order))
 
         return CreateOrderResponse(
             order = order.toResponse(),

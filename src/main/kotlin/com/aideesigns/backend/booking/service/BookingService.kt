@@ -8,9 +8,11 @@ import com.aideesigns.backend.booking.dto.BookingStatusUpdateRequest
 import com.aideesigns.backend.booking.entity.Booking
 import com.aideesigns.backend.booking.repository.BookingRepository
 import com.aideesigns.backend.booking.repository.ProductionSlotRepository
+import com.aideesigns.backend.notification.events.BookingCreatedEvent
 import com.aideesigns.backend.shared.enums.BookingStatus
 import com.aideesigns.backend.shared.exception.DomainException
 import com.aideesigns.backend.shared.exception.ResourceNotFoundException
+import org.springframework.context.ApplicationEventPublisher
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import java.util.*
@@ -19,7 +21,9 @@ import java.util.*
 class BookingService(
     private val bookingRepository: BookingRepository,
     private val slotRepository: ProductionSlotRepository,
-    private val productionSlotService: ProductionSlotService
+    private val productionSlotService: ProductionSlotService,
+    private val eventPublisher: ApplicationEventPublisher
+
 ) {
 
     // ─── Public ────────────────────────────────────────────────────────────────
@@ -54,7 +58,10 @@ class BookingService(
         slot.incrementBookedCount()
         slotRepository.save(slot)
 
-        return bookingRepository.save(booking).toResponse()
+        val savedBooking = bookingRepository.save(booking)
+        eventPublisher.publishEvent(BookingCreatedEvent(this, savedBooking))
+        return savedBooking.toResponse()
+//        return bookingRepository.save(booking).toResponse()
     }
 
     // Customer can track their booking using booking ID + phone or email

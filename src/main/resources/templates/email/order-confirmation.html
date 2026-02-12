@@ -2,9 +2,107 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation</title>
 </head>
-<body>
+<body style="margin: 0; padding: 0; font-family: 'Georgia', serif; background-color: #f9f5f0;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9f5f0; padding: 40px 0;">
+    <tr>
+        <td align="center">
+            <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+
+                <!-- Header -->
+                <tr>
+                    <td style="background-color: #1a1a1a; padding: 40px; text-align: center;">
+                        <h1 style="color: #c9a96e; margin: 0; font-size: 28px; letter-spacing: 2px;">AIDEESIGNS</h1>
+                        <p style="color: #999; margin: 8px 0 0; font-size: 13px; letter-spacing: 1px;">& STITCHES</p>
+                    </td>
+                </tr>
+
+                <!-- Body -->
+                <tr>
+                    <td style="padding: 40px;">
+                        <h2 style="color: #1a1a1a; font-size: 22px; margin: 0 0 8px;">Order Confirmed!</h2>
+                        <p style="color: #666; font-size: 15px; margin: 0 0 30px; line-height: 1.6;">
+                            Hi <strong>{{CUSTOMER_NAME}}</strong>, we've received your order.
+                            Complete your payment using the link provided to begin processing.
+                        </p>
+
+                        <!-- Order Summary -->
+                        <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9f5f0; border-radius: 6px; padding: 24px; margin-bottom: 24px;">
+                            <tr>
+                                <td style="padding-bottom: 12px;">
+                                    <p style="margin: 0; color: #999; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">Order ID</p>
+                                    <p style="margin: 4px 0 0; color: #1a1a1a; font-size: 13px; font-family: monospace;">{{ORDER_ID}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 12px;">
+                                    <p style="margin: 0; color: #999; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">Delivery Address</p>
+                                    <p style="margin: 4px 0 0; color: #1a1a1a; font-size: 15px;">{{DELIVERY_ADDRESS}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 12px;">
+                                    <p style="margin: 0; color: #999; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">Payment Status</p>
+                                    <p style="margin: 4px 0 0; color: #c9a96e; font-size: 15px; font-weight: bold;">{{PAYMENT_STATUS}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p style="margin: 0; color: #999; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">Date</p>
+                                    <p style="margin: 4px 0 0; color: #1a1a1a; font-size: 14px;">{{CREATED_AT}}</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- Items Table -->
+                        <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 24px;">
+                            <thead>
+                                <tr style="background-color: #1a1a1a;">
+                                    <th style="padding: 10px 8px; color: #c9a96e; font-size: 11px; letter-spacing: 1px; text-align: left; text-transform: uppercase;">Product</th>
+                                    <th style="padding: 10px 8px; color: #c9a96e; font-size: 11px; letter-spacing: 1px; text-align: left; text-transform: uppercase;">Size</th>
+                                    <th style="padding: 10px 8px; color: #c9a96e; font-size: 11px; letter-spacing: 1px; text-align: left; text-transform: uppercase;">Qty</th>
+                                    <th style="padding: 10px 8px; color: #c9a96e; font-size: 11px; letter-spacing: 1px; text-align: left; text-transform: uppercase;">Unit</th>
+                                    <th style="padding: 10px 8px; color: #c9a96e; font-size: 11px; letter-spacing: 1px; text-align: left; text-transform: uppercase;">Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{ORDER_ITEMS}}
+                            </tbody>
+                        </table>
+
+                        <!-- Totals -->
+                        <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 30px;">
+                            <tr>
+                                <td style="padding: 8px 0; color: #666; font-size: 14px;">Delivery Fee</td>
+                                <td style="padding: 8px 0; color: #1a1a1a; font-size: 14px; text-align: right;">{{DELIVERY_FEE}}</td>
+                            </tr>
+                            <tr style="border-top: 2px solid #1a1a1a;">
+                                <td style="padding: 12px 0; color: #1a1a1a; font-size: 16px; font-weight: bold;">Total</td>
+                                <td style="padding: 12px 0; color: #c9a96e; font-size: 18px; font-weight: bold; text-align: right;">{{TOTAL_AMOUNT}}</td>
+                            </tr>
+                        </table>
+
+                        <p style="color: #666; font-size: 14px; line-height: 1.7; margin: 0;">
+                            To track your order, use your <strong>Order ID</strong> with your phone number or email on our website.
+                        </p>
+                    </td>
+                </tr>
+
+                <!-- Footer -->
+                <tr>
+                    <td style="background-color: #1a1a1a; padding: 30px; text-align: center;">
+                        <p style="color: #666; font-size: 12px; margin: 0 0 8px;">Aideesigns & Stitches</p>
+                        <p style="color: #444; font-size: 11px; margin: 0;">Custom outfits made just for you.</p>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+</table>
 
 </body>
 </html>

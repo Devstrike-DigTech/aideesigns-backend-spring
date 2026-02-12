@@ -22,6 +22,7 @@ class SecurityConfig(
     @Bean
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http
+            .cors {  }
             .csrf { it.disable() }
             .sessionManagement {
                 it.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -41,7 +42,7 @@ class SecurityConfig(
                     .requestMatchers("/api/orders", "/api/orders/**").permitAll()
 
                     // Public testimonials
-                    .requestMatchers("/api/testimonials").permitAll()
+                    .requestMatchers("/api/testimonials", "/api/testimonials/**").permitAll()
 
                     // Public CMS content
                     .requestMatchers("/api/content/**").permitAll()

@@ -4,17 +4,22 @@ spring:
     username: aideesigns_user
     password: devpassword
     driver-class-name: org.postgresql.Driver
+
   mvc:
     log-request-details: true
-    use-suffix-pattern: false
+
   servlet:
     multipart:
       enabled: true
 
-logging:
-  level:
-    org.springframework.web: DEBUG
-    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+  mail:
+    host: smtp.gmail.com
+    port: 465
+    username: luomyequa@gmail.com
+    password: iuincbbwsuzujeik
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.ssl.enable: true
 
   jpa:
     hibernate:
@@ -30,9 +35,14 @@ logging:
     locations: classpath:db/migration
     schemas: public
 
+logging:
+  level:
+    org.springframework.web: DEBUG
+    org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
+
 jwt:
-    secret: dev-secret-key-that-is-long-enough-for-hmac-sha256
-    expiration-seconds: 86400
+  secret: dev-secret-key-that-is-long-enough-for-hmac-sha256
+  expiration-seconds: 86400
 
 payment:
   paystack:
@@ -45,9 +55,13 @@ payment:
     webhook-secret: ADS-FLW-wH9x2mKqP7vZnRjT4bLcYeU3sG6dF8aE
 
 app:
-    setup-key: dev-setup-key-123
-    payment:
-      callback-url: http://localhost:3000/payment/callback
+  setup-key: dev-setup-key-123
+  payment:
+    callback-url: http://localhost:3000/payment/callback
+  mail:
+    from-address: noreply@aideesigns.com
+    from-name: Aideesigns & Stitches
+    admin-email: hellorichard.uzor@gmail.com
 
 server:
   port: 8089
