@@ -1,26 +1,35 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/aideesigns
-    username: ${DB_USERNAME:aideesigns_user}
-    password: ${DB_PASSWORD:devpassword}
+    url: ${DATABASE_URL}
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
       ddl-auto: validate
+    show-sql: false
     properties:
       hibernate:
-        format_sql: true
-    show-sql: true
+        format_sql: false
 
   flyway:
     enabled: true
     baseline-on-migrate: true
     locations: classpath:db/migration
     schemas: public
+
+  # Email configuration (YOU NEED THIS!)
+  mail:
+    host: ${SPRING_MAIL_HOST:smtp.gmail.com}
+    port: ${SPRING_MAIL_PORT:465}
+    username: ${SPRING_MAIL_USERNAME:}
+    password: ${SPRING_MAIL_PASSWORD:}
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.ssl.enable: true
+
 jwt:
-    secret: ${JWT_SECRET:your-very-long-secret-key-at-least-32-chars-long}
-    expiration-seconds: 86400
+  secret: ${JWT_SECRET:your-very-long-secret-key-at-least-32-chars-long}
+  expiration-seconds: 86400
 
 payment:
   paystack:
@@ -33,10 +42,21 @@ payment:
     webhook-secret: ${FLUTTERWAVE_WEBHOOK_SECRET:}
 
 app:
-    setup-key: ${ADMIN_SETUP_KEY:changeme-before-deploy}
-    payment:
-      callback-url: ${PAYMENT_CALLBACK_URL:http://localhost:3000/payment/callback}
+  setup-key: ${ADMIN_SETUP_KEY:changeme-before-deploy}
+  payment:
+    callback-url: ${PAYMENT_CALLBACK_URL:http://localhost:3000/payment/callback}
+  mail:
+    from-address: ${MAIL_FROM_ADDRESS:noreply@aideesigns.com}
+    from-name: ${MAIL_FROM_NAME:Aideesigns & Stitches}
+    admin-email: ${ADMIN_EMAIL:hellorichard.uzor@gmail.com}
 
-
+# Important: Use PORT env variable for Railway/Render
 server:
-  port: 8080
+  port: ${PORT:8080}
+
+# Production logging
+logging:
+  level:
+    root: INFO
+    com.aideesigns: INFO
+    org.springframework.web: WARN

@@ -38,6 +38,9 @@ class SecurityConfig(
                     // Public bookings
                     .requestMatchers("/api/bookings", "/api/bookings/**").permitAll()
 
+                    // Public slots
+                    .requestMatchers("/api/slots/**").permitAll()
+
                     // Public orders tracking
                     .requestMatchers("/api/orders", "/api/orders/**").permitAll()
 
