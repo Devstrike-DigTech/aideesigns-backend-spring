@@ -12,7 +12,12 @@ class CorsConfig {
         return object : WebMvcConfigurer {
             override fun addCorsMappings(registry: CorsRegistry) {
                 registry.addMapping("/**")
-                    .allowedOrigins("http://localhost:3001", "http://localhost:3000") // Multiple origins in one call
+                    .allowedOrigins(
+                        "http://localhost:3001",
+                        "http://localhost:3000",
+                        "https://aideesigns-website-public-vite.vercel.app",
+                        "https://aideesigns-admin-frontend-vite.vercel.app/login"
+                    ) // Multiple origins in one call
                     .allowedMethods("*")
                     .allowedHeaders("*")
                     .allowCredentials(true)
