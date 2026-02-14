@@ -16,7 +16,7 @@ class CorsConfig {
                         "http://localhost:3001",
                         "http://localhost:3000",
                         "https://aideesigns-website-public-vite.vercel.app",
-                        "https://aideesigns-admin-frontend-vite.vercel.app/login"
+                        "https://aideesigns-admin-frontend-vite.vercel.app"
                     ) // Multiple origins in one call
                     .allowedMethods("*")
                     .allowedHeaders("*")
