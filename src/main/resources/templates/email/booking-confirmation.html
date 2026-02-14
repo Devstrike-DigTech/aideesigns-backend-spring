@@ -2,9 +2,89 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmation</title>
 </head>
-<body>
+<body style="margin: 0; padding: 0; font-family: 'Georgia', serif; background-color: #f9f5f0;">
+
+<table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9f5f0; padding: 40px 0;">
+    <tr>
+        <td align="center">
+            <table width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+
+                <!-- Header -->
+                <tr>
+                    <td style="background-color: #1a1a1a; padding: 40px; text-align: center;">
+                        <h1 style="color: #c9a96e; margin: 0; font-size: 28px; letter-spacing: 2px;">AIDEESIGNS</h1>
+                        <p style="color: #999; margin: 8px 0 0; font-size: 13px; letter-spacing: 1px;">& STITCHES</p>
+                    </td>
+                </tr>
+
+                <!-- Body -->
+                <tr>
+                    <td style="padding: 40px;">
+                        <h2 style="color: #1a1a1a; font-size: 22px; margin: 0 0 8px;">Booking Received!</h2>
+                        <p style="color: #666; font-size: 15px; margin: 0 0 30px; line-height: 1.6;">
+                            Hi <strong>{{CUSTOMER_NAME}}</strong>, thank you for booking with us.
+                            Our team will review your request and contact you within 24 hours to confirm your booking.
+                        </p>
+
+                        <!-- Booking Details -->
+                        <table width="100%" cellpadding="0" cellspacing="0" style="background-color: #f9f5f0; border-radius: 6px; padding: 24px; margin-bottom: 30px;">
+                            <tr>
+                                <td style="padding-bottom: 12px;">
+                                    <p style="margin: 0; color: #999; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">Booking ID</p>
+                                    <p style="margin: 4px 0 0; color: #1a1a1a; font-size: 13px; font-family: monospace;">{{BOOKING_ID}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 12px;">
+                                    <p style="margin: 0; color: #999; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">Outfit Type</p>
+                                    <p style="margin: 4px 0 0; color: #1a1a1a; font-size: 15px; font-weight: bold;">{{OUTFIT_TYPE}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 12px;">
+                                    <p style="margin: 0; color: #999; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">Preferred Production Date</p>
+                                    <p style="margin: 4px 0 0; color: #1a1a1a; font-size: 15px;">{{PRODUCTION_DATE}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td style="padding-bottom: 12px;">
+                                    <p style="margin: 0; color: #999; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">Additional Notes</p>
+                                    <p style="margin: 4px 0 0; color: #1a1a1a; font-size: 15px;">{{NOTES}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p style="margin: 0; color: #999; font-size: 11px; letter-spacing: 1px; text-transform: uppercase;">Status</p>
+                                    <p style="margin: 4px 0 0; color: #c9a96e; font-size: 15px; font-weight: bold;">{{STATUS}}</p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p style="color: #666; font-size: 14px; line-height: 1.7; margin: 0 0 20px;">
+                            To track your booking status, visit our website and use your <strong>Booking ID</strong> along with your phone number or email.
+                        </p>
+
+                        <p style="color: #666; font-size: 14px; line-height: 1.7; margin: 0;">
+                            Have questions? Reach us on WhatsApp or Instagram — links below.
+                        </p>
+                    </td>
+                </tr>
+
+                <!-- Footer -->
+                <tr>
+                    <td style="background-color: #1a1a1a; padding: 30px; text-align: center;">
+                        <p style="color: #666; font-size: 12px; margin: 0 0 8px;">Aideesigns & Stitches</p>
+                        <p style="color: #444; font-size: 11px; margin: 0;">Custom outfits made just for you.</p>
+                    </td>
+                </tr>
+
+            </table>
+        </td>
+    </tr>
+</table>
 
 </body>
 </html>
